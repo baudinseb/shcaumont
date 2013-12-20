@@ -1,0 +1,15 @@
+<h1>Bienvenue sur le site du SHC Aumont Loggers</h1>
+
+<section>
+
+{% for article in articles %}
+    <p>Voici les articles</p>
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.text }}</p>
+        <aside>{{ article.author }}<br />{{ article.pub_date }}</aside>
+    </article>    
+{% empty %}
+    <p>Aucune news</p>
+{% endfor %}
+</section>

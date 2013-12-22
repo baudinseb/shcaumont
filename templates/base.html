@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>SHC Aumont Loggers</title>
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'global.css' %}" />
+    </head>
+    
+    <body>
+        {% block header %}
+        <header>
+            <nav>
+                <ul><li><a href="/index/">Accueil</a></li></ul>
+            </nav>
+        </header>
+        {% endblock %}
+        
+        <div id="main_page">
+            {% block main_content %}
+
+            {% endblock %}
+        </div>
+        
+        {% block footer %}
+        <footer>
+            <p>Le copyright</p>
+        </footer>
+        {% endblock %}
+    </body>
+    
+    
+</html>

@@ -8,25 +8,58 @@
     </head>
     
     <body>
-        {% block header %}
-        <header>
-            <nav>
-                <ul><li><a href="/index/">Accueil</a></li></ul>
-            </nav>
-        </header>
-        {% endblock %}
-        
-        <div id="main_page">
-            {% block main_content %}
-
-            {% endblock %}
+        <div id="global">
+            <header>
+                <div id="img_header"><h1>Site web en construction du SHC Aumont Loggers</h1></div>
+                <nav id="menu_header">
+                    <ul>
+                        <li><a href="/index/">Accueil</a></li>
+                        <li><a href="/index/">Championnat</a></li>
+                        <li><a href="/index/">Play-Off</a></li>
+                        <li><a href="/index/">Coupe</a></li>
+                        <li><a href="/index/">Equipes</a></li>
+                        <li><a href="/index/">Statistiques</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <div id="main_page">
+                <div id="left_page">
+                    {% block content_page %}
+    
+                    {% endblock %}
+                </div>
+                
+                <div id="right_page">
+                    <div id="next_games">
+                        <h2>Prochains matchs</h2>
+                        <h3>10 janvier 2013</h3>
+                        <p>
+                            16h00 Aumont I - Estavayer I<br />
+                            19h00 Aumont II - Payerne I<br />
+                        </p>
+                        <h3>11 janvier 2013</h3>
+                        <p>
+                            20h00 Aumont I - Estavayer I<br />
+                        </p>
+                    </div>
+                    <div id="last_games">
+                        <h2>Derniers résultats</h2>
+                        <h3>09 janvier 2013</h3>
+                        <p class="games">Aumont I - Estavayer I</p><p class="score">14 - 9</p>
+                        <p class="games">Aumont I - Murist/Montet I</p><p class="score">14 - 9</p>
+                        <h3>08 janvier 2013</h3>
+                        <p class="games">Aumont I - Estavayer I</p><p class="score">14 - 9</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="div_clear"></div>
+            
+            <footer>
+                <p>Site web en cours de dévelopement</p>
+            </footer>
         </div>
-        
-        {% block footer %}
-        <footer>
-            <p>Le copyright</p>
-        </footer>
-        {% endblock %}
     </body>
     
     

@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
-{% block main_content %}
+{% block content_page %}
 <h1>Bienvenue sur le site du SHC Aumont Loggers</h1>
 
 <section>
-
 {% for article in articles %}
-    <p>Voici les articles</p>
     <article>
         <h2>{{ article.title }}</h2>
         <p>{{ article.text }}</p>

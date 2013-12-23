@@ -1,3 +1,120 @@
-body {
-    background-color: rgba(0, 0, 50, 0.5);
+#global {
+    margin: auto;
+    width: 1000px;
 }
+
+/**** Header with menu (Start) ****/
+
+#img_header {
+    height: 100px;
+    text-align: center;
+    padding: 30px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: -moz-linear-gradient(center bottom , #666666 0pt, #5E5E5E 50%, #707070 51%, #808080 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #707070 #333333 #333333;
+    border-image: none;
+    border-radius: 6px;
+    border-right: 1px solid #333333;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 3px #999999;
+    height: 36px;
+}
+
+ul li{
+    display: inline;
+    list-style: none outside none;
+}
+
+ul a{
+    display: inline-block;
+    border-left: 1px solid #555555;
+    border-right: 1px solid #888888;
+    color: #FFFFFF;
+    font-family: Helvetica,Arial,Verdana,sans-serif;
+    font-size: 1em;
+    height: 36px;
+    line-height: 36px;
+    margin: 0;
+    padding: 0 35px;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #444444;
+}
+
+ul *:first-child a {
+    border-left: 0 none;
+}
+
+ul *:last-child a {
+    border-right: 0 none;
+}
+
+ul a:hover, nav a:focus {
+    background: -moz-linear-gradient(center bottom , #444444 0pt, #3E3E3E 50%, #505050 51%, #606060 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    text-shadow: -1px -1px 0 #000000;
+}
+
+/**** Header with menu (End) ****/
+
+/**** Main content (Start) ****/
+
+#left_page {
+    float: left;
+    width: 70%;
+    padding-right: 10px;
+    text-align: justify;
+}
+
+#right_page {
+    float: right;
+    width: 28%;
+}
+
+#last_games {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#last_games p{
+    margin: 0;
+    padding: 0;
+}
+
+#last_games h2, #last_games h3{
+    float: left;
+    margin-bottom: 5px;
+}
+
+#last_games .games{
+    float: left;
+    width: 80%;
+    text-align: left;
+}
+#last_games .score{
+    float: left;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
+}
+
+
+/**** Main content (End) ****/
+
+
+/**** Footer (Start) ****/
+
+.div_clear {
+    clear: both;
+}
+
+/**** Footer (End) ****/

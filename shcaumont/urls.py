@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', include('news.urls')),
+    url(r'^team/', include('team.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

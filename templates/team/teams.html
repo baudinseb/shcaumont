@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content_page %}
+<h1>Les contingents des équipes</h1>
+
+<section>
+{% for team in teams %}
+    <h2>{{ team.name }}</h2>
+{% empty %}
+    <p>Aucune équipe présente</p>
+{% endfor %}
+</section>
+
+{% endblock %}

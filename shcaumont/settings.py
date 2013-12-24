@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+ROOT_PATH = os.path.dirname(__file__)
 
 
 # Quick-start development settings - unsuitable for production
@@ -72,7 +73,7 @@ USE_TZ = True
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = 'static/'
+STATIC_ROOT = os.path.join(ROOT_PATH, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

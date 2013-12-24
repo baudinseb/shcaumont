@@ -1,14 +1,19 @@
-img {
-    width: 100px;
+.player {
+    float: left;
+    margin-bottom: 20px;
 }
-
 .player_picture {
     float: left;
+}
+
+.player_picture img {
+    width: 100px;
 }
 
 .player_info {
     float: left;
     margin-left: 10px;
+    width: 200px;
 }
 
 .player_info p {

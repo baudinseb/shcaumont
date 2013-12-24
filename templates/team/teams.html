@@ -6,16 +6,30 @@
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'teams.css' %}" />    
 {% endblock %}
 
+{% block right_page_menu %}
+    <ul>
+    {% for team in teams %}
+        <li><a href="#{{ team.id }}">{{team.name}}</a></li>
+    {% empty %}
+        <li>Aucune équipe présente</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
 {% block content_page %}
 <h1>Les contingents des équipes</h1>
 
 <section>
 {% for team in teams %}
-    <h2>{{ team.name }} - {{team.division.name}}</h2>
+    <h2 id='{{ team.id }}'>{{ team.name }} - {{team.division.name}}</h2>
     {% for player in team.players.all %}
         <div class="player">
             <div class="player_picture">
-                <img src="{{ MEDIA_URL }}{{player.picture}}" />
+                {% if player.picture %}
+                    <img src="{{ MEDIA_URL }}{{player.picture}}" />
+                {% else %}
+                    <img src="{{ MEDIA_URL }}pictures/nobody.jpg" />
+                {% endif %}
             </div>
             <div class="player_info">
                 <p>Nom: {{ player.lastname }}</p>
@@ -26,7 +40,7 @@
                 <p>Position: {{ player.position.name }}</p>
             </div>
         </div>
-    {% empty%}
+    {% empty %}
         <p>Aucun joueur présent dans cette équipe</p>
     {% endfor %}
     

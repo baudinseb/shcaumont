@@ -26,9 +26,9 @@ class Player(models.Model):
     
     lastname = models.CharField(max_length=60)
     firstname = models.CharField(max_length=60)
-    pseudo = models.CharField(max_length=60)
-    birthdate = models.DateField()
-    number = models.SmallIntegerField()
+    pseudo = models.CharField(max_length=60, blank=True)
+    birthdate = models.DateField(blank=True)
+    number = models.SmallIntegerField(blank=True)
     position = models.ForeignKey(Position)
     picture = models.ImageField(upload_to=upload_rename, blank=True)
     pass    

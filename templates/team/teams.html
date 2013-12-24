@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 
+{% block meta_head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'teams.css' %}" />    
+{% endblock %}
+
 {% block content_page %}
 <h1>Les contingents des équipes</h1>
 
 <section>
 {% for team in teams %}
-    <h2>{{ team.name }}</h2>
+    <h2>{{ team.name }} - {{team.division.name}}</h2>
+    {% for player in team.players.all %}
+        <div class="player">
+            <p>Nom: {{ player.lastname }}</p>
+            <p>Prénom: {{ player.firstname }}</p>
+            <p>Surnom: {{ player.pseudo }}</p>
+            <p>Né le: {{ player.birthdate }}</p>
+            <p>Numéro: {{ player.number }}</p>
+            <p>Position: {{ player.position.name }}</p>
+        </div>
+    {% empty%}
+        <p>Aucun joueur présent dans cette équipe</p>
+    {% endfor %}
 {% empty %}
     <p>Aucune équipe présente</p>
 {% endfor %}

@@ -10,5 +10,5 @@ def standings(request):
 
 def teams(request):
     season = Season.objects.filter(current=True).get()
-    teams = season.team_set.filter(name__startswith='SHC Aumont')
+    teams = season.team_set.filter(name__startswith='SHC Aumont').all()
     return render(request, 'team/teams.html', {'teams':teams})

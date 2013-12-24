@@ -34,9 +34,9 @@
             <div class="player_info">
                 <p>Nom: {{ player.lastname }}</p>
                 <p>Prénom: {{ player.firstname }}</p>
-                <p>Surnom: {{ player.pseudo }}</p>
-                <p>Né le: {{ player.birthdate }}</p>
-                <p>Numéro: {{ player.number }}</p>
+                {% if player.pseudo %}<p>Surnom: {{ player.pseudo }}</p>{% endif %}
+                {% if player.birthdate %}<p>Né le: {{ player.birthdate|date:'d.m.y' }}</p>{% endif %}
+                {% if player.number %}<p>Numéro: {{ player.number }}</p>{% endif %}
                 <p>Position: {{ player.position.name }}</p>
             </div>
         </div>

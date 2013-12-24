@@ -3,12 +3,15 @@
 {% block content_page %}
 <h1>Les championnats</h1>
 
-<section>
+<table>
+    <thead><tr><th>Equipe</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Victoires">V</abbr></th><th><abbr title="Egalités">E</abbr></th><th><abbr title="Défaites">D</abbr></th><th><abbr title="Buts marqés">BM</abbr></th><th><abbr title="Buts encaissés">BE</abbr></th><th><abbr title="Points">P</abbr></th></tr></thead>
+    <tbody>
 {% for team in teams %}
-    <tr><td>{{ team.name }}</td></tr>
+    <tr><td>{{ team.name }}</td><td>{{ team.games }}</td><td>{{ team.wins }}</td><td>{{ team.draws }}</td><td>{{ team.losses }}</td><td>{{ team.goals_for }}</td><td>{{ team.goals_against }}</td><td>{{ team.points }}</td></tr>
 {% empty %}
     <p>Aucune équipe présente</p>
 {% endfor %}
-</section>
+    </tbody>
+</table>
 
 {% endblock %}

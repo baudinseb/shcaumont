@@ -5,7 +5,7 @@ from team.models import Team, Division, Season
 
 def standings(request):
     season = Season.objects.filter(current=True).get()
-    teams = season.team_set.all()
+    teams = season.team_set.extra(select={"points": "wins * 2 + draws"}).order_by('points').reverse().all()
     return render(request, 'team/standings.html', {'teams':teams})
 
 def teams(request):

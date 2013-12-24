@@ -43,6 +43,8 @@ class Team(models.Model):
     wins = models.SmallIntegerField()
     draws = models.SmallIntegerField()
     losses = models.SmallIntegerField()
+    goals_for = models.SmallIntegerField()
+    goals_against = models.SmallIntegerField()
     division = models.ForeignKey(Division)
     season = models.ForeignKey(Season)
     players = models.ManyToManyField(Player, blank=True)

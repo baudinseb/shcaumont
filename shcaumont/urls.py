@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'^$', include('news.urls')),
     url(r'^team/', include('team.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^schedule/', include('schedule.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

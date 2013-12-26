@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block meta_head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'regular.css' %}" />    
+{% endblock %}
+
+{% block right_page_menu %}
+    <ul>
+    {% for team in aumont_teams %}
+        <li><a href="/schedule/regular/{{ team.id }}">{{team.name}}</a></li>
+    {% empty %}
+        <li>Aucune équipe présente</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block content_page %}
+<h1>{{my_team.name}} - {{my_team.division.name}}</h1>
+
+<table>
+    <thead><tr><th>Equipe</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Victoires">V</abbr></th><th><abbr title="Egalités">E</abbr></th><th><abbr title="Défaites">D</abbr></th><th><abbr title="Buts marqés">BM</abbr></th><th><abbr title="Buts encaissés">BE</abbr></th><th><abbr title="Points">P</abbr></th></tr></thead>
+    <tbody>
+{% for team in teams %}
+    {% if team.id == my_team.id %}
+        <tr class="my_team"><td>{{ team.name }}</td><td>{{ team.games }}</td><td>{{ team.wins }}</td><td>{{ team.draws }}</td><td>{{ team.losses }}</td><td>{{ team.goals_for }}</td><td>{{ team.goals_against }}</td><td>{{ team.points }}</td></tr>
+    {% else %}
+        <tr><td>{{ team.name }}</td><td>{{ team.games }}</td><td>{{ team.wins }}</td><td>{{ team.draws }}</td><td>{{ team.losses }}</td><td>{{ team.goals_for }}</td><td>{{ team.goals_against }}</td><td>{{ team.points }}</td></tr>
+    {% endif %}
+{% empty %}
+    <p>Aucune équipe présente</p>
+{% endfor %}
+    </tbody>
+</table>
+
+<table>
+    <thead><tr><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th>Feuilles</th></tr></thead>
+    <tbody>
+    {% for game in games %}
+        <tr><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td><td>{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
+            {% if game.score_home %}
+            <td>{{ game.score_home }}-{{ game.score_away }}
+                {% if game.details %}
+                    {{ game.details }}
+                {% endif %}
+            </td>
+            <td>
+                {% if game.pdf_file %}
+                    <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}/img/pdf.jpg" /></a></td></tr>
+                {% endif %}
+            {% endif %}
+            
+    {% empty %}
+        <p>Pas de matchs prévus pour cette équipe</p>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

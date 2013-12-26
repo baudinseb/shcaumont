@@ -26,11 +26,11 @@ class Player(models.Model):
     
     lastname = models.CharField(max_length=60)
     firstname = models.CharField(max_length=60)
-    pseudo = models.CharField(max_length=60, blank=True)
-    birthdate = models.DateField(blank=True)
-    number = models.SmallIntegerField(blank=True)
+    pseudo = models.CharField(max_length=60, blank=True, null=True)
+    birthdate = models.DateField(blank=True, null=True)
+    number = models.SmallIntegerField(blank=True, null=True)
     position = models.ForeignKey(Position)
-    picture = models.ImageField(upload_to=upload_rename, blank=True)
+    picture = models.ImageField(upload_to=upload_rename, blank=True, null=True)
     pass    
     
     def __unicode__(self):
@@ -47,7 +47,7 @@ class Team(models.Model):
     goals_against = models.SmallIntegerField()
     division = models.ForeignKey(Division)
     season = models.ForeignKey(Season)
-    players = models.ManyToManyField(Player, blank=True)
+    players = models.ManyToManyField(Player, blank=True, null=True, default=None)
 
     def __unicode__(self):
         return u"{0} ({1} - {2})".format(self.short_name, self.season.year_start, self.season.year_end)

@@ -1,7 +1,17 @@
 from django.contrib import admin
 from team.models import Team, Division, Season, Position, Player
 
+class PlayerInline(admin.TabularInline):
+    model = Team.players.through
+    extra = 8
+    
+
 class TeamAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Equipe', {'fields': ['name', 'short_name', 'season', 'division']}),
+        ('Classement', {'fields': ['games', 'wins', 'draws', 'losses', 'goals_for', 'goals_against']}),
+    ]
+    inlines = [PlayerInline]
     list_display   = ('name', 'short_name', 'season', 'division')
     list_filter    = ('name', )
     ordering       = ('season', 'division')

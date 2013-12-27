@@ -50,7 +50,7 @@ class Team(models.Model):
     players = models.ManyToManyField(Player, blank=True, null=True, default=None)
 
     def __unicode__(self):
-        return u"{0} ({1} - {2})".format(self.short_name, self.season.year_start, self.season.year_end)
+        return u"{0} {1} ({2} - {3})".format(self.short_name, self.division.name, self.season.year_start, self.season.year_end)
     
     
     

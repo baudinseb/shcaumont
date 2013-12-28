@@ -13,14 +13,14 @@
     <body>
         <div id="global">
             <header>
-                <div id="img_header"><h1>Site web en construction du SHC Aumont Loggers</h1></div>
+                <div id="img_header"><img src="{{STATIC_URL}}img/header.jpg" /></div>
                 <nav id="menu_header">
                     <ul>
                         <li><a href="/">Accueil</a></li>
                         <li><a href="/schedule">Championnat</a></li>
                         <li><a href="/schedule/playoffs">Play-Off</a></li>
                         <li><a href="/schedule/cup">Coupe</a></li>
-                        <li><a href="/team/teams">Equipes</a></li>
+                        <li><a href="/team">Equipes</a></li>
                         <li><a href="/index/">Statistiques</a></li>
                     </ul>
                 </nav>
@@ -38,19 +38,15 @@
                     
                     {% endblock %}
                     
-                    <div id="next_games">
+                    <div class="right_page_menu">
                         <h2>Prochains matchs</h2>
-                        <h3>10 janvier 2013</h3>
-                        <p>
-                            16h00 Aumont I - Estavayer I<br />
-                            19h00 Aumont II - Payerne I<br />
-                        </p>
-                        <h3>11 janvier 2013</h3>
-                        <p>
-                            20h00 Aumont I - Estavayer I<br />
-                        </p>
+                        <h3>09 janvier 2013</h3>
+                        <p class="games">Aumont I - Estavayer I</p><p class="score">16h00</p>
+                        <p class="games">Aumont I - Murist/Montet I</p><p class="score">19h00</p>
+                        <h3>08 janvier 2013</h3>
+                        <p class="games">Aumont I - Estavayer I</p><p class="score">15h00</p>
                     </div>
-                    <div id="last_games">
+                    <div class="right_page_menu">
                         <h2>Derniers résultats</h2>
                         <h3>09 janvier 2013</h3>
                         <p class="games">Aumont I - Estavayer I</p><p class="score">14 - 9</p>

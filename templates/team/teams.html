@@ -7,22 +7,24 @@
 {% endblock %}
 
 {% block right_page_menu %}
-    <ul>
-    {% for team in teams %}
-        <li><a href="#{{ team.id }}">{{team.name}}</a></li>
-    {% empty %}
-        <li>Aucune équipe présente</li>
-    {% endfor %}
-    </ul>
+    <div class="right_page_menu">
+        <h2>Equipes</h2>
+        <ul>
+        {% for team in teams %}
+            <li><a href="/team/{{ team.id }}">{{team.name}}</a></li>
+        {% empty %}
+            <li>Aucune équipe présente</li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {% block content_page %}
 <h1>Les contingents des équipes</h1>
 
 <section>
-{% for team in teams %}
-    <h2 id='{{ team.id }}'>{{ team.name }} - {{team.division.name}}</h2>
-    {% for player in team.players.all %}
+    <h2 id='{{ my_team.id }}'>{{ my_team.name }} - {{my_team.division.name}}</h2>
+    {% for player in my_team.players.all %}
         <div class="player">
             <div class="player_picture">
                 {% if player.picture %}
@@ -45,9 +47,6 @@
     {% endfor %}
     
     <div class="div_clear"></div>
-{% empty %}
-    <p>Aucune équipe présente</p>
-{% endfor %}
 </section>
 
 {% endblock %}

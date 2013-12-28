@@ -2,6 +2,7 @@
     float: left;
     margin-bottom: 20px;
 }
+
 .player_picture {
     float: left;
 }
@@ -13,10 +14,10 @@
 .player_info {
     float: left;
     margin-left: 10px;
-    width: 200px;
+    width: 165px;
 }
 
 .player_info p {
-    padding: 2px;
+    padding-bottom: 3px;
     margin: 0;
 }

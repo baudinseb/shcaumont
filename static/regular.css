@@ -1,0 +1,36 @@
+
+#standing {
+    margin: auto;
+    margin-top: 35px;
+    text-align: right;
+}
+
+#standing th{
+    padding: 2px 8px 2px 8px;
+    border-bottom: 1px solid black;
+}
+
+#standing td {
+    padding: 2px 8px 2px 8px;
+}
+
+#standing td:nth-child(2) {
+    padding-right: 32px;
+}
+
+.standing_team_name {
+    text-align: left;
+}
+
+#standing th{
+    font-size: 1.1em;
+}
+
+#championship {
+    margin-top: 35px;
+    width: 100%;
+}
+
+.my_team {
+    font-weight: bold;
+}

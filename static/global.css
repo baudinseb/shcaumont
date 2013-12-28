@@ -1,6 +1,28 @@
+body{
+    background: linear-gradient(#66A3FF, #EBF3FF); /* Standard syntax */
+    min-height: 900px;
+}
+
+abbr[title] {
+    border-bottom-width: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+h1 {
+    color: #000066;
+    text-align: center;
+}
+
+h2, h3 {
+    color: #000066;
+}
+
 #global {
     margin: auto;
-    width: 1000px;
+    width: 1100px;
 }
 
 /**** Header with menu (Start) ****/
@@ -19,14 +41,14 @@
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background: -moz-linear-gradient(center bottom , #666666 0pt, #5E5E5E 50%, #707070 51%, #808080 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border-color: #707070 #333333 #333333;
+    background: linear-gradient(#245DB2, #4791FF); /* Standard syntax */
+    border-color: #245DB2;
     border-image: none;
     border-radius: 6px;
-    border-right: 1px solid #333333;
+    border-right: 1px solid #245DB2;
     border-style: solid;
     border-width: 1px;
-    box-shadow: 0 1px 3px #999999;
+    box-shadow: 0 1px 3px #245DB2;
     height: 36px;
 }
 
@@ -37,8 +59,8 @@
 
 #menu_header ul a{
     display: inline-block;
-    border-left: 1px solid #555555;
-    border-right: 1px solid #888888;
+    border-left: 1px solid #FFF;
+    border-right: 1px solid #FFF;
     color: #FFFFFF;
     font-family: Helvetica,Arial,Verdana,sans-serif;
     font-size: 1em;
@@ -58,9 +80,8 @@
     border-right: 0 none;
 }
 
-#menu_header ul a:hover, nav a:focus {
-    background: -moz-linear-gradient(center bottom , #444444 0pt, #3E3E3E 50%, #505050 51%, #606060 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    text-shadow: -1px -1px 0 #000000;
+#menu_header ul a:hover, #menu_header ul a:focus {
+    background: linear-gradient(#143566, #4791FF);
 }
 
 /**** Header with menu (End) ****/
@@ -69,41 +90,63 @@
 
 #left_page {
     float: left;
-    width: 70%;
+    width: 75%;
     padding-right: 10px;
     text-align: justify;
 }
 
 #right_page {
     float: right;
-    width: 28%;
+    width: 23%;
 }
 
-#last_games {
+
+#right_page ul{
     float: left;
-    margin: 0;
     padding: 0;
+    margin: 0 0 0 5px;
+    list-style: none;
 }
 
-#last_games p{
-    margin: 0;
-    padding: 0;
+#right_page a{
+    color: black;
+    text-decoration: none;
 }
 
-#last_games h2, #last_games h3{
+#right_page a:hover{
+    font-weight: bold;
+}
+
+.right_page_menu {
+    border: 1px solid #000066;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: left;
+    width: 100%;
+}
+
+.right_page_menu p{
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.right_page_menu h2, .right_page_menu h3{
     float: left;
     margin-bottom: 5px;
+    margin-left: 5px;
 }
 
-#last_games .games{
+.right_page_menu .games{
     float: left;
-    width: 80%;
+    width: 78%;
     text-align: left;
 }
-#last_games .score{
-    float: left;
-    width: 20%;
-    text-align: right;
+.right_page_menu .score{
+    float: right;
+    width: 18%;
+    text-align: left;
     font-weight: bold;
 }
 

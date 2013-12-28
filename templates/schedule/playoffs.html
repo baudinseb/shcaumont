@@ -7,13 +7,16 @@
 {% endblock %}
 
 {% block right_page_menu %}
-    <ul>
-    {% for team in aumont_teams %}
-        <li><a href="/schedule/playoffs/{{ team.id }}">{{team.name}}</a></li>
-    {% empty %}
-        <li>Aucune équipe présente</li>
-    {% endfor %}
-    </ul>
+    <div class="right_page_menu">
+        <h2>Equipes</h2>
+        <ul>
+        {% for team in aumont_teams %}
+            <li><a href="/schedule/playoffs/{{ team.id }}">{{team.name}}</a></li>
+        {% empty %}
+            <li>Aucune équipe présente</li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {% block content_page %}
@@ -21,11 +24,16 @@
 
 
 
-<table>
-    <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th>Feuilles</th></tr></thead>
+<table id="championship">
+    <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
     <tbody>
     {% for game in games %}
-        <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td><td>{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
+        <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
+            {% if game.team_home.id = my_team.id %}
+                <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
+            {% else %}
+                <td>{{ game.team_home.name }}</td><td class="my_team">{{ game.team_away.name }}</td>
+            {% endif %}
             {% if game.score_home %}
             <td>{{ game.score_home }}-{{ game.score_away }}
                 {% if game.details %}

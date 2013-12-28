@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^team/', include('team.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^schedule/', include('schedule.urls')),
+    url(r'^stats/', include('stats.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

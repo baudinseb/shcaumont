@@ -31,6 +31,7 @@ class Player(models.Model):
     number = models.SmallIntegerField(blank=True, null=True)
     position = models.ForeignKey(Position)
     picture = models.ImageField(upload_to=upload_rename, blank=True, null=True)
+    in_activity = models.BooleanField()
     pass    
     
     def __unicode__(self):

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block meta_head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'stats.css' %}" />    
+{% endblock %}
+
+{% block right_page_menu %}
+    <div class="right_page_menu">
+        <h2>Equipes</h2>
+        <ul>
+        {% for team in aumont_teams %}
+            <li><a href="/stats/team/{{ team.id }}">{{team.name}}</a></li>
+        {% empty %}
+            <li>Aucune équipe présente</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content_page %}
+<h1>{{my_team.name}} - {{my_team.division.name}}</h1>
+
+<table id="stats">
+    <thead><tr><th>#</th><th>Joueur</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">Pts</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
+    {% for player in players_stats %}
+        <tr><td>{{forloop.counter}}</td><td>{{ player.firstname }} {{ player.lastname }}</td><td>{{ player.games }}</td><td>{{ player.goals }}</td><td>{{ player.assists }}</td><td>{{ player.points }}</td><td>{{ player.penalties }}</td></tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

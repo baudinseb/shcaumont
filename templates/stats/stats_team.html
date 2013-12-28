@@ -22,11 +22,21 @@
 {% block content_page %}
 <h1>{{my_team.name}} - {{my_team.division.name}}</h1>
 
-<table id="stats">
-    <thead><tr><th>#</th><th>Joueur</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">Pts</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
-    {% for player in players_stats %}
-        <tr><td>{{forloop.counter}}</td><td>{{ player.firstname }} {{ player.lastname }}</td><td>{{ player.games }}</td><td>{{ player.goals }}</td><td>{{ player.assists }}</td><td>{{ player.points }}</td><td>{{ player.penalties }}</td></tr>
-    {% endfor %}
-</table>
+{% for player_stat in players_stats%}
+
+    {% if player_stat %}
+
+    <h2>{{ player_stat.0.type_name }}</h2>
+
+    <table class="stats">
+        <thead><tr><th>#</th><th>Joueur</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">Pts</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
+        {% for player in player_stat %}
+            <tr><td>{{forloop.counter}}</td><td>{{ player.firstname }} {{ player.lastname }}</td><td>{{ player.games }}</td><td>{{ player.goals }}</td><td>{{ player.assists }}</td><td>{{ player.points }}</td><td>{{ player.penalties }}</td></tr>
+        {% endfor %}
+    </table>
+    
+    {% endif %}
+
+{% endfor %}
 
 {% endblock %}

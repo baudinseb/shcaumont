@@ -12,7 +12,7 @@ class Season(models.Model):
     current = models.BooleanField()
     
     def __unicode__(self):
-        return u"Season {0} - {1}".format(self.year_start, self.year_end)
+        return u"{0} - {1}".format(self.year_start, self.year_end)
     
 class Position(models.Model):
     name = models.CharField(max_length=40)

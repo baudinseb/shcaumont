@@ -7,8 +7,19 @@
 {% endblock %}
 
 
+{% block right_page_menu %}
+    <div class="right_page_menu">
+        <h2>Statistiques</h2>
+        <div class="div_clear"></div>
+        <ul>
+            <li><a href="/stats/player/{{ player.id }}">Statistiques</a></li>
+            <li><a href="/stats/player/record/{{ player.id }}">Records</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
 {% block content_page %}
-<h1>{{player.firstname}} {{player.lastname}}</h1>
+<h1>{{player.firstname}} {{player.lastname}} - Statistiques</h1>
 
 
 {% if last_five %}

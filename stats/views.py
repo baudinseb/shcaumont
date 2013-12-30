@@ -52,6 +52,14 @@ def player_id(request, player_id):
     
     return render(request, 'stats/stats_player.html', {'player': player, 'stats': stats, 'last_five': last_five_stats})
 
+def record_player_id(request, player_id):
+    player = Player.objects.filter(id=player_id).get()
+    goals = Stat.objects.filter(player=player_id).extra(select={"points": "goals + assists"}).order_by('goals').reverse().all()[:5]
+    assists = Stat.objects.filter(player=player_id).extra(select={"points": "goals + assists"}).order_by('assists').reverse().all()[:5]
+    penalties = Stat.objects.filter(player=player_id).extra(select={"points": "goals + assists"}).order_by('penalties').reverse().all()[:5]
+    points = Stat.objects.filter(player=player_id).extra(select={"points": "goals + assists"}).order_by('points').reverse().all()[:5]
+    return render(request, 'stats/record_player.html', {'player': player, 'goals': goals, 'assists': assists, 'points': points, 'penalties': penalties})
+
 def stats_sql(team_id, game_type_id):
     cursor = connection.cursor()    
     cursor.execute("SELECT lastname, firstname, type_name, count(*) as games, sum(goals) as goals, sum(assists) as assists, sum(penalties) as penalties, sum(goals) + sum(assists) as points FROM team_player, stats_stat, schedule_schedule, schedule_type_game WHERE team_id = %s AND game_type_id = %s AND team_player.id = player_id AND schedule_type_game.id = game_type_id AND schedule_schedule.id = calendar_id GROUP BY team_player.id ORDER BY points DESC", [team_id, game_type_id])

@@ -1,25 +1,43 @@
 
-h2 {
+h2, h3 {
     margin-left:  100px;
 }
 
-.stats {
+.stats, .stats_player, .last_five_stats {
     margin: auto;
     margin-top: 35px;
     text-align: right;
 }
 
-.stats th{
+.stats th, .stats_player th, .last_five_stats th{
     padding: 2px 8px 2px 8px;
     border-bottom: 1px solid black;
     font-size: 1.1em;
 }
 
-.stats td {
+.stats td, .stats_player td, .last_five_stats td {
     padding: 2px 8px 2px 8px;
 }
 
 .stats td:nth-child(2), .stats th:nth-child(2) {
+    padding-right: 32px;
+    text-align: left;
+}
+
+.stats_player td:nth-child(1), .stats_player th:nth-child(1) {
+    padding-right: 32px;
+    text-align: left;
+}
+
+.last_five_stats td:nth-child(1), .last_five_stats th:nth-child(1) {
+    padding-right: 32px;
+    text-align: left;
+}
+.last_five_stats td:nth-child(2), .last_five_stats th:nth-child(2) {
+    padding-right: 32px;
+    text-align: left;
+}
+.last_five_stats td:nth-child(3), .last_five_stats th:nth-child(3) {
     padding-right: 32px;
     text-align: left;
 }

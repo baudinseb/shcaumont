@@ -21,3 +21,7 @@
     padding-bottom: 3px;
     margin: 0;
 }
+
+.link_player, .link_player a, .link_player a:hover, .link_player a:active{
+    color: black;
+}

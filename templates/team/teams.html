@@ -25,23 +25,25 @@
 <section>
     <h2 id='{{ my_team.id }}'>{{ my_team.name }} - {{my_team.division.name}}</h2>
     {% for player in my_team.players.all %}
-        <div class="player">
-            <div class="player_picture">
-                {% if player.picture %}
-                    <img src="{{ MEDIA_URL }}{{player.picture}}" />
-                {% else %}
-                    <img src="{{ STATIC_URL }}img/nobody.jpg" />
-                {% endif %}
+        <a class="link_player" href="/stats/player/{{player.id}}">
+            <div class="player">
+                <div class="player_picture">
+                    {% if player.picture %}
+                        <img src="{{ MEDIA_URL }}{{player.picture}}" />
+                    {% else %}
+                        <img src="{{ STATIC_URL }}img/nobody.jpg" />
+                    {% endif %}
+                </div>
+                <div class="player_info">
+                    <p>Nom: {{ player.lastname }}</p>
+                    <p>Prénom: {{ player.firstname }}</p>
+                    {% if player.pseudo %}<p>Surnom: {{ player.pseudo }}</p>{% endif %}
+                    {% if player.birthdate %}<p>Né le: {{ player.birthdate|date:'d.m.y' }}</p>{% endif %}
+                    {% if player.number %}<p>Numéro: {{ player.number }}</p>{% endif %}
+                    <p>Position: {{ player.position.name }}</p>
+                </div>
             </div>
-            <div class="player_info">
-                <p>Nom: {{ player.lastname }}</p>
-                <p>Prénom: {{ player.firstname }}</p>
-                {% if player.pseudo %}<p>Surnom: {{ player.pseudo }}</p>{% endif %}
-                {% if player.birthdate %}<p>Né le: {{ player.birthdate|date:'d.m.y' }}</p>{% endif %}
-                {% if player.number %}<p>Numéro: {{ player.number }}</p>{% endif %}
-                <p>Position: {{ player.position.name }}</p>
-            </div>
-        </div>
+        </a>
     {% empty %}
         <p>Aucun joueur présent dans cette équipe</p>
     {% endfor %}

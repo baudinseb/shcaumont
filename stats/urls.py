@@ -4,5 +4,6 @@ from stats import views
 
 urlpatterns = patterns('',
     url(r'^$', views.team, name='team'),
-    url(r'^team/(\d+)/$', views.team_id, name='team'),
+    url(r'^team/(\d+)/$', views.team_id, name='team_id'),
+    url(r'^player/(\d+)/$', views.player_id, name='player_id'),
 )

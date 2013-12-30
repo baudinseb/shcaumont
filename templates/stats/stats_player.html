@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block meta_head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'stats.css' %}" />    
+{% endblock %}
+
+
+{% block content_page %}
+<h1>{{player.firstname}} {{player.lastname}}</h1>
+
+
+{% if last_five %}
+    <h2>Les dernières statistiques</h2>
+    <table class="last_five_stats">
+        <thead><tr><th>Date</th><th>Equipe</th><th>Type</th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">P</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
+        {% for stat in last_five %}
+            <tr><td>{{ stat.calendar.date|date:'d.m.y' }}</td><td>{{ stat.team.short_name }}</td><td>{{ stat.calendar.game_type.type_name }}</td><td>{{ stat.goals }}</td><td>{{ stat.assists }}</td><td>{{ stat.points }}</td><td>{{ stat.penalties }}</td></tr>
+        {% endfor %}    
+    </table>
+
+{% endif %}
+
+{% for stat_division in stats%}
+
+    {% if stat_division %}
+
+    <h2>{{ stat_division.0.0.division_name }}</h2>
+
+    {% for stat_type_game in stat_division %}
+    
+        {% if stat_type_game %}
+        
+            <h3>{{ stat_type_game.0.type_name }}</h3>
+            <table class="stats_player">
+                <thead><tr><th>Saison</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">P</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
+                {% for season in stat_type_game %}
+                    <tr><td>{{season.year_start}} - {{season.year_end}}</td><td>{{ season.games }}</td><td>{{ season.goals }}</td><td>{{ season.assists }}</td><td>{{ season.points }}</td><td>{{ season.penalties }}</td></tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endfor %}
+
+    
+    {% endif %}
+
+{% endfor %}
+
+{% endblock %}

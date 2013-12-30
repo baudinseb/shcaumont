@@ -1,0 +1,25 @@
+
+h2 {
+    margin-left:  100px;
+}
+
+.stats {
+    margin: auto;
+    margin-top: 35px;
+    text-align: right;
+}
+
+.stats th{
+    padding: 2px 8px 2px 8px;
+    border-bottom: 1px solid black;
+    font-size: 1.1em;
+}
+
+.stats td {
+    padding: 2px 8px 2px 8px;
+}
+
+.stats td:nth-child(2), .stats th:nth-child(2) {
+    padding-right: 32px;
+    text-align: left;
+}

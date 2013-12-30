@@ -8,24 +8,30 @@ def team(request):
     season = Season.objects.filter(current=True).get()
     aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()
     game_types = Type_Game.objects.all()
-    players_stats = []
+    all_stats = []
     
     for game_type in game_types:
-        players_stats.append(stats_sql(aumont_teams[0].id, game_type.id))
+        players_stats = stats_sql(aumont_teams[0].id, game_type.id)
+        for player_stats in players_stats:
+            player_stats['points_per_game'] = float(player_stats['points']) / float(player_stats['games'])
+        all_stats.append(players_stats)
         
-    return render(request, 'stats/stats_team.html', {'aumont_teams': aumont_teams, 'my_team': aumont_teams[0], 'players_stats': players_stats })
+    return render(request, 'stats/stats_team.html', {'aumont_teams': aumont_teams, 'my_team': aumont_teams[0], 'players_stats': all_stats })
 
 def team_id(request, team_id):
     season = Season.objects.filter(current=True).get()
     aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()
     my_team = Team.objects.filter(id=team_id).get()
     game_types = Type_Game.objects.all()
-    players_stats = []
+    all_stats = []
     
     for game_type in game_types:
-        players_stats.append(stats_sql(team_id, game_type.id))
+        players_stats = stats_sql(team_id, game_type.id)
+        for player_stats in players_stats:
+            player_stats['points_per_game'] = float(player_stats['points']) / float(player_stats['games'])
+        all_stats.append(players_stats)
         
-    return render(request, 'stats/stats_team.html', {'aumont_teams': aumont_teams, 'my_team': my_team, 'players_stats': players_stats })
+    return render(request, 'stats/stats_team.html', {'aumont_teams': aumont_teams, 'my_team': my_team, 'players_stats': all_stats })
 
 
 

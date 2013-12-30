@@ -40,14 +40,14 @@ def cup_team(request, id_team):
 def playoffs(request):
     season = Season.objects.filter(current=True).get()
     aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()   
-    type_game = Type_Game.objects.filter(type_name='Play-off').get()
-    games = Schedule.objects.filter(Q(game_type=type_game) & (Q(team_home=aumont_teams[0].id) | Q(team_away=aumont_teams[0].id))).order_by('game_round__standing').all()
+    type_game = Type_Game.objects.filter(Q(type_name='Play-off') | Q(type_name='Play-out')).all()
+    games = Schedule.objects.filter((Q(game_type=type_game[0]) | Q(game_type=type_game[1])) & (Q(team_home=aumont_teams[0].id) | Q(team_away=aumont_teams[0].id))).order_by('game_round__standing').all()
     return render(request, 'schedule/playoffs.html', {'aumont_teams': aumont_teams, 'games': games, 'my_team': aumont_teams[0]})
 
 def playoffs_team(request, id_team):
     season = Season.objects.filter(current=True).get()
     aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()   
-    type_game = Type_Game.objects.filter(type_name='Play-off').get()
+    type_game = Type_Game.objects.filter(Q(type_name='Play-off') | Q(type_name='Play-out')).all()
     my_team = Team.objects.filter(id=id_team).get()
-    games = Schedule.objects.filter(Q(game_type=type_game) & (Q(team_home=id_team) | Q(team_away=id_team))).order_by('game_round__standing').all()
+    games = Schedule.objects.filter((Q(game_type=type_game[0]) | Q(game_type=type_game[1])) & (Q(team_home=id_team) | Q(team_away=id_team))).order_by('game_round__standing').all()
     return render(request, 'schedule/playoffs.html', {'aumont_teams': aumont_teams, 'games': games, 'my_team': my_team})

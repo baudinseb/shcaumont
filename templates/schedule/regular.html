@@ -31,39 +31,38 @@
     {% else %}
         <tr><td>{{forloop.counter}}</td><td class="standing_team_name">{{ team.name }}</td><td>{{ team.games }}</td><td>{{ team.wins }}</td><td>{{ team.draws }}</td><td>{{ team.losses }}</td><td>{{ team.goals_for }}</td><td>{{ team.goals_against }}</td><td>{{ team.points }}</td></tr>
     {% endif %}
-{% empty %}
-    <p>Aucune équipe présente</p>
 {% endfor %}
     </tbody>
 </table>
 
-<table id="championship">
-    <thead><tr><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
-    <tbody>
-    {% for game in games %}
-        <tr><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
-            {% if game.team_home.id = my_team.id %}
-                <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
-            {% else %}
-                <td>{{ game.team_home.name }}</td><td class="my_team">{{ game.team_away.name }}</td>
-            {% endif %}
-            
-            {% if game.score_home %}
-            <td>{{ game.score_home }} - {{ game.score_away }}
-                {% if game.details %}
-                    {{ game.details }}
+{% if games %}
+    <table id="championship">
+        <thead><tr><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
+        <tbody>
+        {% for game in games %}
+            <tr><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
+                {% if game.team_home.id = my_team.id %}
+                    <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
+                {% else %}
+                    <td>{{ game.team_home.name }}</td><td class="my_team">{{ game.team_away.name }}</td>
                 {% endif %}
-            </td>
-            <td>
-                {% if game.pdf_file %}
-                    <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}img/pdf.jpg" /></a></td></tr>
+                
+                {% if game.score_home %}
+                <td>{{ game.score_home }} - {{ game.score_away }}
+                    {% if game.details %}
+                        {{ game.details }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if game.pdf_file %}
+                        <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}img/pdf.jpg" /></a></td></tr>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            
-    {% empty %}
-        <p>Pas de matchs prévus pour cette équipe</p>
-    {% endfor %}
-    </tbody>
-</table>
-
+                
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Pas de rencontres prévues pour l'instant</p>
+{% endif %}
 {% endblock %}

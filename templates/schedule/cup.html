@@ -20,36 +20,40 @@
 {% endblock %}
 
 {% block content_page %}
-<h1>{{my_team.name}} - Coupe</h1>
-
-
-
-<table id="championship">
-    <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
-    <tbody>
-    {% for game in games %}
-        <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
-            {% if game.team_home.id = my_team.id %}
-                <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
-            {% else %}
-                <td>{{ game.team_home.name }}</td><td class="my_team">{{ game.team_away.name }}</td>
-            {% endif %}
-            {% if game.score_home %}
-            <td>{{ game.score_home }}-{{ game.score_away }}
-                {% if game.details %}
-                    {{ game.details }}
+    
+{% if games %}    
+    
+    <h1>{{my_team.name}} - {{games.0.game_type}}</h1>
+    
+    <table id="championship">
+        <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
+        <tbody>
+        {% for game in games %}
+            <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
+                {% if game.team_home.id = my_team.id %}
+                    <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
+                {% else %}
+                    <td>{{ game.team_home.name }}</td><td class="my_team">{{ game.team_away.name }}</td>
                 {% endif %}
-            </td>
-            <td>
-                {% if game.pdf_file %}
-                    <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}img/pdf.jpg" /></a></td></tr>
+                {% if game.score_home %}
+                <td>{{ game.score_home }}-{{ game.score_away }}
+                    {% if game.details %}
+                        {{ game.details }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if game.pdf_file %}
+                        <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}img/pdf.jpg" /></a></td></tr>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            
-    {% empty %}
-        <p>Pas de matchs prévus pour cette équipe</p>
-    {% endfor %}
-    </tbody>
-</table>
+                
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+    <h1>{{my_team.name}}</h1>
+    <p>Pas de rencontres prévues pour l'instant</p>
+{% endif %}
 
 {% endblock %}

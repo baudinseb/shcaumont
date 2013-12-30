@@ -20,9 +20,10 @@
 {% endblock %}
 
 {% block content_page %}
-<h1>{{my_team.name}} - Play-off</h1>
-
-
+    
+{% if games %}    
+    
+<h1>{{my_team.name}} - {{games.0.game_type}}</h1>
 
 <table id="championship">
     <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
@@ -45,11 +46,13 @@
                     <a href="{{ MEDIA_URL }}{{ game.pdf_file }}"><img src="{{ STATIC_URL }}img/pdf.jpg" /></a></td></tr>
                 {% endif %}
             {% endif %}
-            
-    {% empty %}
-        <p>Pas de matchs prévus pour cette équipe</p>
     {% endfor %}
     </tbody>
 </table>
+
+{% else %}
+    <h1>{{my_team.name}}</h1>
+    <p>Pas de rencontres prévues pour l'instant</p>
+{% endif %}
 
 {% endblock %}

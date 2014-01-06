@@ -32,7 +32,7 @@
     <table class="stats">
         <thead><tr><th>#</th><th>Joueur</th><th><abbr title="Matchs">M</abbr></th><th><abbr title="Buts">B</abbr></th><th><abbr title="Assistances">A</abbr></th><th><abbr title="Points">P</abbr></th><th><abbr title="Points par match">P/M</abbr></th><th><abbr title="Minutes de pénalité">MP</abbr></th></tr></thead>
         {% for player in player_stat %}
-            <tr><td>{{forloop.counter}}</td><td>{{ player.firstname }} {{ player.lastname }}</td><td>{{ player.games }}</td><td>{{ player.goals }}</td><td>{{ player.assists }}</td><td>{{ player.points }}</td><td>{{ player.points_per_game }}</td><td>{{ player.penalties }}</td></tr>
+            <tr><td>{{forloop.counter}}</td><td><a class="link_player" href="/stats/player/{{player.id}}">{{ player.firstname }} {{ player.lastname }}</a></td><td>{{ player.games }}</td><td>{{ player.goals }}</td><td>{{ player.assists }}</td><td>{{ player.points }}</td><td>{{ player.points_per_game }}</td><td>{{ player.penalties }}</td></tr>
         {% endfor %}
     </table>
     

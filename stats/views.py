@@ -62,7 +62,7 @@ def record_player_id(request, player_id):
 
 def stats_sql(team_id, game_type_id):
     cursor = connection.cursor()    
-    cursor.execute("SELECT lastname, firstname, type_name, count(*) as games, sum(goals) as goals, sum(assists) as assists, sum(penalties) as penalties, sum(goals) + sum(assists) as points FROM team_player, stats_stat, schedule_schedule, schedule_type_game WHERE team_id = %s AND game_type_id = %s AND team_player.id = player_id AND schedule_type_game.id = game_type_id AND schedule_schedule.id = calendar_id GROUP BY team_player.id ORDER BY points DESC", [team_id, game_type_id])
+    cursor.execute("SELECT team_player.id, lastname, firstname, type_name, count(*) as games, sum(goals) as goals, sum(assists) as assists, sum(penalties) as penalties, sum(goals) + sum(assists) as points FROM team_player, stats_stat, schedule_schedule, schedule_type_game WHERE team_id = %s AND game_type_id = %s AND team_player.id = player_id AND schedule_type_game.id = game_type_id AND schedule_schedule.id = calendar_id GROUP BY team_player.id ORDER BY points DESC", [team_id, game_type_id])
     return dictfetchall(cursor)
 
 def player_stats_sql(player_id, division_id, game_type_id):

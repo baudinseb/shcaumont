@@ -18,9 +18,9 @@ class TeamAdmin(admin.ModelAdmin):
     search_fields  = ('name', )
 
 class DivisionAdmin(admin.ModelAdmin):
-    list_display   = ('name', )
-    list_filter    = ('name', )
-    ordering       = ('name', )
+    list_display   = ('name', 'standing')
+    list_filter    = ('name', 'standing')
+    ordering       = ('standing', )
     search_fields  = ('name', )
     
 class SeasonAdmin(admin.ModelAdmin):
@@ -30,15 +30,15 @@ class SeasonAdmin(admin.ModelAdmin):
     search_fields  = ('name', )
     
 class PositionAdmin(admin.ModelAdmin):
-    list_display   = ('name', )
-    list_filter    = ('name', )
-    ordering       = ('name', )
+    list_display   = ('name', 'standing')
+    list_filter    = ('name', 'standing')
+    ordering       = ('standing', )
     search_fields  = ('name', )
     
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ('lastname', 'firstname')
+    list_display = ('lastname', 'firstname', 'in_activity')
     list_filter    = ('lastname', 'firstname')
-    ordering       = ('lastname', 'firstname')
+    ordering       = ('-in_activity', 'lastname', 'firstname')
     search_fields  = ('lastname', 'firstname')
     
     

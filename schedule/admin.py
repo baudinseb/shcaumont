@@ -14,10 +14,10 @@ class RoundAdmin(admin.ModelAdmin):
     search_fields  = ('round_name', )
     
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display   = ('date', 'game_type', 'game_round', 'team_home', 'team_away', 'score_home', 'score_away', 'pdf_file')
-    list_filter    = ('date', 'game_type', 'game_round', 'team_home', 'team_away')
-    ordering       = ('date', )
-    search_fields  = ('date', 'game_type', 'game_round', 'team_home', 'team_away')    
+    list_display   = ('game_date', 'game_type', 'game_round', 'team_home', 'team_away', 'score_home', 'score_away', 'pdf_file')
+    list_filter    = ('game_date', 'game_type', 'game_round', 'team_home', 'team_away')
+    ordering       = ('game_date', )
+    search_fields  = ('game_date', 'game_type', 'game_round', 'team_home', 'team_away')    
     
 admin.site.register(Type_Game, TypeGameAdmin)
 admin.site.register(Round, RoundAdmin)

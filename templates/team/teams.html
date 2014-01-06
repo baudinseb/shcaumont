@@ -9,9 +9,10 @@
 {% block right_page_menu %}
     <div class="right_page_menu">
         <h2>Equipes</h2>
+        <div class="div_clear"></div>
         <ul>
         {% for team in teams %}
-            <li><a href="/team/{{ team.id }}">{{team.name}}</a></li>
+            <li><a href="/team/{{ team.id }}">{{team.short_name}} - {{team.division.name}}</a></li>
         {% empty %}
             <li>Aucune équipe présente</li>
         {% endfor %}
@@ -24,7 +25,7 @@
 
 <section>
     <h2 id='{{ my_team.id }}'>{{ my_team.name }} - {{my_team.division.name}}</h2>
-    {% for player in my_team.players.all %}
+    {% for player in players %}
         <a class="link_player" href="/stats/player/{{player.id}}">
             <div class="player">
                 <div class="player_picture">

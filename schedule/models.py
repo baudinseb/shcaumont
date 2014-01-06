@@ -18,7 +18,7 @@ class Schedule(models.Model):
     def upload_rename(instance, file_name):
         return  u"pdf_file/{0}.{1}".format(instance.id,file_name.split('.')[-1])
     
-    date = models.DateTimeField()
+    game_date = models.DateTimeField()
     game_type = models.ForeignKey(Type_Game)
     game_round = models.ForeignKey(Round, blank=True, null=True, default=None)
     team_home = models.ForeignKey(Team, related_name="team_home")
@@ -29,6 +29,6 @@ class Schedule(models.Model):
     pdf_file = models.FileField(upload_to=upload_rename, blank=True, null=True)
     
     def __unicode__(self):
-        return u"{0} {1}-{2} {3}".format(self.date, self.team_home, self.team_away, self.game_type)
+        return u"{0} {1}-{2} {3}".format(self.game_date, self.team_home, self.team_away, self.game_type)
     
     

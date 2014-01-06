@@ -9,9 +9,10 @@
 {% block right_page_menu %}
     <div class="right_page_menu">
         <h2>Equipes</h2>
+        <div class="div_clear"></div>
         <ul>
         {% for team in aumont_teams %}
-            <li><a href="/schedule/cup/{{ team.id }}">{{team.name}}</a></li>
+            <li><a href="/schedule/cup/{{ team.id }}">{{team.short_name}} - {{team.division.name}}</a></li>
         {% empty %}
             <li>Aucune équipe présente</li>
         {% endfor %}
@@ -29,7 +30,7 @@
         <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
         <tbody>
         {% for game in games %}
-            <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.date|date:'d.m.y' }}</td><td>{{ game.date|time:'H:i' }}</td>
+            <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.game_date|date:'d.m.y' }}</td><td>{{ game.game_date|time:'H:i' }}</td>
                 {% if game.team_home.id = my_team.id %}
                     <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
                 {% else %}

@@ -6,7 +6,7 @@ from stats.models import Stat
 
 def team(request):
     season = Season.objects.filter(current=True).get()
-    aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()
+    aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all().order_by('division__standing').all()
     game_types = Type_Game.objects.all()
     all_stats = []
     
@@ -20,7 +20,7 @@ def team(request):
 
 def team_id(request, team_id):
     season = Season.objects.filter(current=True).get()
-    aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all()
+    aumont_teams = season.team_set.filter(name__startswith='SHC Aumont').all().order_by('division__standing').all()
     my_team = Team.objects.filter(id=team_id).get()
     game_types = Type_Game.objects.all()
     all_stats = []
@@ -38,7 +38,7 @@ def player_id(request, player_id):
     all_divisons = Division.objects.all()
     game_types = Type_Game.objects.exclude(type_name__startswith='Coupe').all()
     
-    last_five_stats = Stat.objects.filter(player=player_id).all().extra(select={"points": "goals + assists"}).order_by('calendar__date').reverse()[:5]
+    last_five_stats = Stat.objects.filter(player=player_id).all().extra(select={"points": "goals + assists"}).order_by('calendar__game_date').reverse()[:5]
     
     stats = []
     

@@ -2,6 +2,7 @@ from django.db import models
 
 class Division(models.Model):
     name = models.CharField(max_length=40)
+    standing = models.SmallIntegerField()
     
     def __unicode__(self):
         return self.name
@@ -16,6 +17,7 @@ class Season(models.Model):
     
 class Position(models.Model):
     name = models.CharField(max_length=40)
+    standing = models.SmallIntegerField()
     
     def __unicode__(self):
         return self.name

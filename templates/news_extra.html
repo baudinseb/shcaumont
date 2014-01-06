@@ -1,0 +1,18 @@
+<div class="right_page_menu">
+    <h2>Prochains matchs</h2>
+    {% for game in next_games %}
+        {% ifchanged game.game_date.day %}
+            <h3>{{ game.game_date|date:'d.m.y' }}</h3>
+        {% endifchanged %}
+        <p class="games">{{game.team_home.short_name}} - {{game.team_away.short_name}}</p><p class="score">{{ game.game_date|time:'H:i' }}</p>
+    {% endfor %}
+</div>
+<div class="right_page_menu">
+    <h2>Derniers résultats</h2>
+    {% for game in last_result %}
+        {% ifchanged game.game_date.day %}
+            <h3>{{ game.game_date|date:'d.m.y' }}</h3>
+        {% endifchanged %}
+        <p class="games">{{game.team_home.short_name}} - {{game.team_away.short_name}}</p><p class="score">{{ game.score_home }} - {{game.score_away}}</p>
+    {% endfor %}
+</div>

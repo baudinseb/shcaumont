@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load news_extras %}
 <!doctype html>
 <html lang="fr">
     <head>
@@ -38,22 +39,7 @@
                     
                     {% endblock %}
                     
-                    <div class="right_page_menu">
-                        <h2>Prochains matchs</h2>
-                        <h3>09 janvier 2013</h3>
-                        <p class="games">Aumont I - Estavayer I</p><p class="score">16h00</p>
-                        <p class="games">Aumont I - Murist/Montet I</p><p class="score">19h00</p>
-                        <h3>08 janvier 2013</h3>
-                        <p class="games">Aumont I - Estavayer I</p><p class="score">15h00</p>
-                    </div>
-                    <div class="right_page_menu">
-                        <h2>Derniers résultats</h2>
-                        <h3>09 janvier 2013</h3>
-                        <p class="games">Aumont I - Estavayer I</p><p class="score">14 - 9</p>
-                        <p class="games">Aumont I - Murist/Montet I</p><p class="score">14 - 9</p>
-                        <h3>08 janvier 2013</h3>
-                        <p class="games">Aumont I - Estavayer I</p><p class="score">14 - 9</p>
-                    </div>
+                    {% show_extra %}
                 </div>
             </div>
             

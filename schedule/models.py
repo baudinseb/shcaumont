@@ -21,6 +21,7 @@ class Schedule(models.Model):
     game_date = models.DateTimeField()
     game_type = models.ForeignKey(Type_Game)
     game_round = models.ForeignKey(Round, blank=True, null=True, default=None)
+    place = models.CharField(max_length=40)
     team_home = models.ForeignKey(Team, related_name="team_home")
     team_away = models.ForeignKey(Team, related_name="team_away")
     score_home = models.SmallIntegerField(blank=True, null=True)

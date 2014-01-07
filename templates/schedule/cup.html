@@ -27,10 +27,10 @@
     <h1>{{my_team.name}} - {{games.0.game_type}}</h1>
     
     <table id="championship">
-        <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
+        <thead><tr><th>Tour</th><th>Date</th><th>Heure</th><th>Lieu</th><th>Domicile</th><th>Extérieur</th><th>Résultats</th><th></th></tr></thead>
         <tbody>
         {% for game in games %}
-            <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.game_date|date:'d.m.y' }}</td><td>{{ game.game_date|time:'H:i' }}</td>
+            <tr><td>{{ game.game_round.round_name }}</td><td>{{ game.game_date|date:'d.m.y' }}</td><td>{{ game.game_date|time:'H:i' }}</td><td>{{ game.place }}</td>
                 {% if game.team_home.id = my_team.id %}
                     <td class="my_team">{{ game.team_home.name }}</td><td>{{ game.team_away.name }}</td>
                 {% else %}
